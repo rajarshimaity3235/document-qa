@@ -1,125 +1,45 @@
 import streamlit as st
 
-def main():
-    # Set page title and favicon
-    st.set_page_config(
-        page_title="Your App Name",
-        page_icon=":rocket:",
-        layout="wide"
-    )
+# Define the function to display each page
+def page_home():
+    st.title("Home Page")
+    st.write("Welcome to the Home Page!")
 
-    # Define the layout of the app
-    st.markdown(
-        """
-        <style>
-        .sidebar .sidebar-content {
-            background-color: #2a4b7c;
-            color: white;
-        }
-        .reportview-container .main .block-container {
-            max-width: 1200px;
-            padding-top: 2rem;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            padding-left: 1rem;
-            padding-top: 1rem;
-        }
-        .logo img {
-            max-width: 100%;
-            height: auto;
-            filter: brightness(0) invert(1); /* Invert color for white logos */
-        }
-        .sidebar .sidebar-content .sidebar-section {
-            margin-bottom: 2rem;
-        }
-        .sidebar .sidebar-content .sidebar-section .sidebar-title {
-            padding: 0.5rem 1rem;
-            margin-bottom: 0.5rem;
-        }
-        .sidebar .sidebar-content .sidebar-section ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        .sidebar .sidebar-content .sidebar-section ul li {
-            padding: 0.5rem 1rem;
-        }
-        .toppanel {
-            background-color: #2a4b7c;
-            padding: 0.5rem;
-            margin-bottom: 2rem;
-            color: white;
-        }
-        .toppanel h3 {
-            display: inline;
-            margin-right: 1rem;
-        }
-        .toppanel ul {
-            display: inline;
-            padding: 0;
-            margin: 0;
-        }
-        .toppanel ul li {
-            display: inline;
-            margin-right: 1rem;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+def page_about():
+    st.title("About Page")
+    st.write("This is the About Page.")
 
-    # Create the sidebar navigation with logo
-    st.sidebar.markdown(
-        """
-        <div class="logo">
-            <img src="https://yourcompanylogo.png" alt="Company Logo" width=50>
-            <h1 style="margin-left: 1rem; color: #ffffff;">Your App Name</h1>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+def page_contact():
+    st.title("Contact Page")
+    st.write("You can contact us here.")
 
-    # Create the top panel with feature names
-    st.markdown(
-        """
-        <div class="toppanel">
-            <h3>Features:</h3>
-            <ul>
-                <li>Feature 1</li>
-                <li>Feature 2</li>
-                <li>Feature 3</li>
-                <!-- Add more features as needed -->
-            </ul>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+# Create the sidebar with links to different pages
+st.sidebar.title("Navigation")
+page = st.sidebar.radio("Go to", ("Home", "About", "Contact"))
 
-    # Create the sidebar navigation
-    st.sidebar.title("Navigation")
-    page = st.sidebar.radio(
-        "",
-        ("Home", "Page 1", "Page 2", "Page 3")
-    )
+# Display the selected page based on user selection
+if page == "Home":
+    page_home()
+elif page == "About":
+    page_about()
+elif page == "Contact":
+    page_contact()
 
-    # Display different pages based on sidebar selection
-    if page == "Home":
-        st.header("Home Page")
-        st.write("Welcome to the home page!")
-
-    elif page == "Page 1":
-        st.header("Page 1")
-        st.write("Content of Page 1 goes here.")
-
-    elif page == "Page 2":
-        st.header("Page 2")
-        st.write("Content of Page 2 goes here.")
-
-    elif page == "Page 3":
-        st.header("Page 3")
-        st.write("Content of Page 3 goes here.")
-
-if __name__ == "__main__":
-    main()
+# Customizing the appearance of the app
+st.markdown(
+    """
+    <style>
+    .st-bw {
+        background-color: black !important;
+    }
+    .css-1vupu7s {
+        padding-top: 0px !important;
+    }
+    .css-1y9fo8r {
+        background-color: #0072B5 !important;
+        color: white !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
