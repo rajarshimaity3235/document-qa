@@ -45,7 +45,7 @@ st.markdown(
 )
 
 # Logo and company name
-st.image('your_logo.png', width=200)
+#st.image('your_logo.png', width=200)
 st.markdown('# Your Company Name')
 
 # Main content display
