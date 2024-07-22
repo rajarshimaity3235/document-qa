@@ -13,7 +13,7 @@ def main():
     """
         <style>
         .sidebar .sidebar-content {
-        background-image: linear-gradient(#2e7bcf,#2e7bcf);
+        background-image: linear-gradient(#2e7bcf,#2e7bcf) !important;
         color: white;
         }
    
