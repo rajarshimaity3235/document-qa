@@ -16,10 +16,7 @@ def main():
         background-image: linear-gradient(#2e7bcf,#2e7bcf);
         color: white;
         }
-        </style>
-        """,
-        unsafe_allow_html=True,
-        )        
+   
         .reportview-container .main .block-container {
             max-width: 1200px;
             padding-top: 2rem;
