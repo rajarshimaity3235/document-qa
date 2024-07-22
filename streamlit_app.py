@@ -12,54 +12,53 @@ def main():
     st.markdown(
         """
         <style>
+        /* Reset Streamlit's default background */
+        body {
+            background-color: #f0f0f0;
+        }
+        
+        /* Style for sidebar */
         .sidebar .sidebar-content {
             background-color: #000000;
             color: white;
-            margin-top: 0;
             padding-top: 0;
+            padding-bottom: 0;
         }
-        .sidebar .sidebar-content .sidebar-section {
-            margin-bottom: 2rem;
-        }
-        .sidebar .sidebar-content .sidebar-section .sidebar-title {
-            padding: 0.5rem 1rem;
-            margin-bottom: 0.5rem;
-        }
-        .sidebar .sidebar-content .sidebar-section ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        .sidebar .sidebar-content .sidebar-section ul li {
-            padding: 0.5rem 1rem;
-        }
-        .toppanel {
-            background-color: #2a4b7c;
-            padding: 0.5rem;
-            margin-bottom: 0.5rem; /* Adjust margin-bottom as needed */
-            margin-top: 0.5rem; /* Adjust margin-top as needed */
+        
+        /* Style for sidebar logo and app name */
+        .sidebar .sidebar-content .sidebar-section .stMarkdown {
             color: white;
         }
-        .toppanel h3 {
-            display: inline;
-            margin-right: 1rem;
+        
+        /* Style for top panel */
+        .toppanel {
+            background-color: #2a4b7c;
+            color: white;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
         }
+        
+        /* Style for feature list in top panel */
         .toppanel ul {
             display: inline;
             padding: 0;
             margin: 0;
         }
-        .toppanel ul li {
-            display: inline;
-            margin-right: 1rem;
+        
+        /* Style for sidebar navigation links */
+        .sidebar .sidebar-content .sidebar-section .sidebar-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
         }
-        .logo {
-            display: flex;
-            align-items: center;
-            padding-left: 1rem;
-            padding-top: 1rem;
+        
+        .sidebar .sidebar-content .sidebar-section .sidebar-list li {
+            padding: 0.5rem 1rem;
         }
-        .logo img {
+        
+        /* Style for logo in sidebar */
+        .sidebar .sidebar-content .sidebar-section .sidebar-logo img {
             max-width: 100%;
             height: auto;
             filter: brightness(0) invert(1); /* Invert color for white logos */
@@ -69,12 +68,20 @@ def main():
         unsafe_allow_html=True
     )
 
-    # Create the sidebar navigation with logo
+    # Create the sidebar navigation with logo and app name
     st.sidebar.markdown(
         """
-        <div class="logo">
-            <img src="https://yourcompanylogo.png" alt="Company Logo" width=50>
-            <h1 style="margin-left: 1rem; color: #ffffff;">Your App Name</h1>
+        <div class="sidebar-section">
+            <div class="sidebar-logo">
+                <img src="https://yourcompanylogo.png" alt="Company Logo" width=50>
+                <h1 style="margin-left: 1rem; color: #ffffff;">Your App Name</h1>
+            </div>
+            <ul class="sidebar-list">
+                <li><a href="#section-home" style="color: white;">Home</a></li>
+                <li><a href="#section-page1" style="color: white;">Page 1</a></li>
+                <li><a href="#section-page2" style="color: white;">Page 2</a></li>
+                <li><a href="#section-page3" style="color: white;">Page 3</a></li>
+            </ul>
         </div>
         """,
         unsafe_allow_html=True
@@ -96,29 +103,18 @@ def main():
         unsafe_allow_html=True
     )
 
-    # Create the sidebar navigation
-    st.sidebar.title("Navigation")
-    page = st.sidebar.radio(
-        "",
-        ("Home", "Page 1", "Page 2", "Page 3")
-    )
+    # Display different sections based on sidebar selection
+    st.markdown("<h2 id='section-home'>Home Section</h2>", unsafe_allow_html=True)
+    st.write("Welcome to the home section!")
 
-    # Display different pages based on sidebar selection
-    if page == "Home":
-        st.header("Home Page")
-        st.write("Welcome to the home page!")
+    st.markdown("<h2 id='section-page1'>Page 1 Section</h2>", unsafe_allow_html=True)
+    st.write("Content of Page 1 goes here.")
 
-    elif page == "Page 1":
-        st.header("Page 1")
-        st.write("Content of Page 1 goes here.")
+    st.markdown("<h2 id='section-page2'>Page 2 Section</h2>", unsafe_allow_html=True)
+    st.write("Content of Page 2 goes here.")
 
-    elif page == "Page 2":
-        st.header("Page 2")
-        st.write("Content of Page 2 goes here.")
-
-    elif page == "Page 3":
-        st.header("Page 3")
-        st.write("Content of Page 3 goes here.")
+    st.markdown("<h2 id='section-page3'>Page 3 Section</h2>", unsafe_allow_html=True)
+    st.write("Content of Page 3 goes here.")
 
 if __name__ == "__main__":
     main()
