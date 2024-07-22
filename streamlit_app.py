@@ -38,6 +38,12 @@ st.markdown(
         padding-top: 0px !important;
         background-color: navy;
         color: white;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 99;
     }
     </style>
     """,
