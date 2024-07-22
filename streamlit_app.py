@@ -14,7 +14,7 @@ def main():
         <style>
         .sidebar .sidebar-content {
             background-color: #2a4b7c;
-            color: white;
+            color: blue;
         }
         .reportview-container .main .block-container {
             max-width: 1200px;
@@ -49,12 +49,12 @@ def main():
         .toppanel {
             background-color: #2a4b7c;
             padding: 0.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
             color: white;
         }
         .toppanel h3 {
             display: inline;
-            margin-right: 1rem;
+            margin-right: 0.5rem;
         }
         .toppanel ul {
             display: inline;
@@ -86,13 +86,6 @@ def main():
         """
         <div class="toppanel">
             <h3>Features:</h3>
-            <ul>
-                <li>Feature 1</li>
-                <li>Feature 2</li>
-                <li>Feature 3</li>
-                <!-- Add more features as needed -->
-            </ul>
-        </div>
         """,
         unsafe_allow_html=True
     )
