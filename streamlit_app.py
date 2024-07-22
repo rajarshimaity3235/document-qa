@@ -13,7 +13,11 @@ def page_contact():
     st.title("Contact Page")
     st.write("You can contact us here.")
 
-# Create the sidebar with links to different pages
+# Upload your logo image
+logo = st.sidebar.file_uploader("Upload Logo", type=["png", "jpg", "jpeg"])
+
+# Create the sidebar with links to different pages and logo display
+st.sidebar.image(logo, use_column_width=True) if logo else None
 st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ("Home", "About", "Contact"))
 
@@ -36,7 +40,7 @@ st.markdown(
         padding-top: 0px !important;
     }
     .css-1y9fo8r {
-        background-color: #0072B5 !important;
+        background-color: #001F3F !important;
         color: white !important;
     }
     </style>
