@@ -20,12 +20,6 @@ def main():
             max-width: 1200px;
             padding-top: 2rem;
         }
-        .toppanel {
-            background-color: #2a4b7c;
-            padding: 0.5rem;
-            margin-bottom: 2rem;
-            color: white;
-        }
         .logo {
             display: flex;
             align-items: center;
@@ -35,25 +29,67 @@ def main():
         .logo img {
             max-width: 100%;
             height: auto;
+            filter: brightness(0) invert(1); /* Invert color for white logos */
+        }
+        .sidebar .sidebar-content .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        .sidebar .sidebar-content .sidebar-section .sidebar-title {
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .sidebar .sidebar-content .sidebar-section ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar .sidebar-content .sidebar-section ul li {
+            padding: 0.5rem 1rem;
+        }
+        .toppanel {
+            background-color: #2a4b7c;
+            padding: 0.5rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+        .toppanel h3 {
+            display: inline;
+            margin-right: 1rem;
+        }
+        .toppanel ul {
+            display: inline;
+            padding: 0;
+            margin: 0;
+        }
+        .toppanel ul li {
+            display: inline;
+            margin-right: 1rem;
         }
         </style>
         """,
         unsafe_allow_html=True
     )
 
-    # Create the top panel with company logo and feature names
+    # Create the sidebar navigation with logo
+    st.sidebar.markdown(
+        """
+        <div class="logo">
+            <img src="https://yourcompanylogo.png" alt="Company Logo" width=50>
+            <h1 style="margin-left: 1rem; color: #ffffff;">Your App Name</h1>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # Create the top panel with feature names
     st.markdown(
         """
         <div class="toppanel">
-            <div class="logo">
-                <img src="https://yourcompanylogo.png" alt="Company Logo" width=100>
-                <h1 style="margin-left: 1rem;">Your App Name</h1>
-            </div>
             <h3>Features:</h3>
             <ul>
-                <li><a href="#section-1">Feature 1</a></li>
-                <li><a href="#section-2">Feature 2</a></li>
-                <li><a href="#section-3">Feature 3</a></li>
+                <li>Feature 1</li>
+                <li>Feature 2</li>
+                <li>Feature 3</li>
                 <!-- Add more features as needed -->
             </ul>
         </div>
@@ -64,7 +100,7 @@ def main():
     # Create the sidebar navigation
     st.sidebar.title("Navigation")
     page = st.sidebar.radio(
-        "Go to",
+        "",
         ("Home", "Page 1", "Page 2", "Page 3")
     )
 
