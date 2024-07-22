@@ -13,23 +13,10 @@ def main():
         """
         <style>
         .sidebar .sidebar-content {
-            background-color: #2a4b7c;
-            color: blue;
-        }
-        .reportview-container .main .block-container {
-            max-width: 1200px;
-            padding-top: 0.2rem;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            padding-left: 1rem;
-            padding-top: 1rem;
-        }
-        .logo img {
-            max-width: 100%;
-            height: auto;
-            filter: brightness(0) invert(1); /* Invert color for white logos */
+            background-color: #000000;
+            color: white;
+            margin-top: 0;
+            padding-top: 0;
         }
         .sidebar .sidebar-content .sidebar-section {
             margin-bottom: 2rem;
@@ -49,12 +36,13 @@ def main():
         .toppanel {
             background-color: #2a4b7c;
             padding: 0.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.5rem; /* Adjust margin-bottom as needed */
+            margin-top: 0.5rem; /* Adjust margin-top as needed */
             color: white;
         }
         .toppanel h3 {
             display: inline;
-            margin-right: 0.5rem;
+            margin-right: 1rem;
         }
         .toppanel ul {
             display: inline;
@@ -64,6 +52,17 @@ def main():
         .toppanel ul li {
             display: inline;
             margin-right: 1rem;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            padding-left: 1rem;
+            padding-top: 1rem;
+        }
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            filter: brightness(0) invert(1); /* Invert color for white logos */
         }
         </style>
         """,
@@ -86,6 +85,13 @@ def main():
         """
         <div class="toppanel">
             <h3>Features:</h3>
+            <ul>
+                <li>Feature 1</li>
+                <li>Feature 2</li>
+                <li>Feature 3</li>
+                <!-- Add more features as needed -->
+            </ul>
+        </div>
         """,
         unsafe_allow_html=True
     )
