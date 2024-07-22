@@ -1,58 +1,36 @@
 import streamlit as st
 
-# Function to display page content based on sidebar selection
+# Define function to render sidebar
+def render_sidebar():
+    st.sidebar.title('Company Name')
+    st.sidebar.image('path_to_logo.png', use_column_width=True)
+    st.sidebar.markdown('[Page 1](#/page1)\n[Page 2](#/page2)\n[Page 3](#/page3)')
+
+# Define function to render top panel
+def render_top_panel(page_name):
+    st.markdown(f'<h1 style="color:navy;">{page_name}</h1>', unsafe_allow_html=True)
+
+# Main function to run the app
 def main():
-    st.sidebar.title('Navigation')
-    page = st.sidebar.radio('Go to', ('Home', 'Page 1', 'Page 2'))
+    st.set_page_config(page_title='Streamlit Web App')
+    
+    render_sidebar()
 
-    if page == 'Home':
-        st.title('Home Page')
-        st.write('Welcome to the Home Page.')
+    # Determine which page to show based on URL hash
+    page = st.experimental_get_query_params().get('page', ['page1'])[0]
 
-    elif page == 'Page 1':
-        st.title('Page 1')
-        st.write('Welcome to Page 1.')
+    # Render the top panel with page name
+    if page == 'page1':
+        render_top_panel('Page 1')
+        st.write('This is Page 1.')
+    elif page == 'page2':
+        render_top_panel('Page 2')
+        st.write('This is Page 2.')
+    elif page == 'page3':
+        render_top_panel('Page 3')
+        st.write('This is Page 3.')
+    else:
+        st.error('Page not found')
 
-    elif page == 'Page 2':
-        st.title('Page 2')
-        st.write('Welcome to Page 2.')
-
-# Sidebar configuration
-st.sidebar.markdown(
-    """
-    <style>
-    .sidebar-content {
-        background-color: black;
-        color: white;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-# Top panel configuration
-st.markdown(
-    """
-    <style>
-    .reportview-container .main .block-container {
-        padding-top: 0px !important;
-        background-color: navy;
-        color: white;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 99;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-# Logo and company name
-#st.image('your_logo.png', width=200)
-st.markdown('# Your Company Name')
-
-# Main content display
-main()
+if __name__ == "__main__":
+    main()
