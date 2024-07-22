@@ -32,7 +32,7 @@ selection = st.sidebar.radio("Go to", pages)
 # Top panel with logo, company name, and title
 st.markdown(
     """
-    <div style="background-color: navy; padding: 10px; color: white;">
+    <div style="background-color: navy; padding: 0.1px; color: white;">
         <h1 style="color: white; text-align: center;">Company Name</h1>
     </div>
     """,
