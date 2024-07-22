@@ -1,66 +1,125 @@
 import streamlit as st
 
-# Define page names and corresponding functions (replace with your actual pages)
-page_names = ["Home", "Page 2", "Page 3"]
-page_functions = [st.write("This is the Home page"), st.write("This is Page 2"), st.write("This is Page 3")]
+def main():
+    # Set page title and favicon
+    st.set_page_config(
+        page_title="Your App Name",
+        page_icon=":rocket:",
+        layout="wide"
+    )
 
-# Custom CSS for styling (place in your main app file)
-st.set_page_config(page_title="Your App Name", page_icon=":gear:", layout="wide")  # Set page title, icon, and wide layout
-
-def add_style():
-    """
-    Adds custom CSS for the app's styling.
-    """
-    style = """
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f0f2f5;  /* Light background for main content area */
+    # Define the layout of the app
+    st.markdown(
+        """
+        <style>
+        .sidebar .sidebar-content {
+            background-color: #2a4b7c;
+            color: white;
         }
-
-        .stApp {
-            padding: 10px;  /* Adjust padding as needed for minimal top space */
-        }
-
-        .reportview-container .sidebar .sidebar-content {
-            background-color: #000 !important;  /* Black sidebar background */
-            color: #fff;  /* White text for sidebar */
-            padding: 15px;  /* Add some padding for aesthetics */
-        }
-
         .reportview-container .main .block-container {
-            padding-top: 20px;  /* Increase padding for minimal top space in main content */
+            max-width: 1200px;
+            padding-top: 2rem;
         }
-
-        .reportview-container .main .block-container h1 {
-            margin-top: 0;  /* Remove default top margin for heading */
+        .logo {
+            display: flex;
+            align-items: center;
+            padding-left: 1rem;
+            padding-top: 1rem;
         }
-
-        .reportview-container .main .annotation {
-            color: #333;  /* Adjust annotation text color */
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            filter: brightness(0) invert(1); /* Invert color for white logos */
         }
-    </style>
-    """
-    st.markdown(style, unsafe_allow_html=True)
+        .sidebar .sidebar-content .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        .sidebar .sidebar-content .sidebar-section .sidebar-title {
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .sidebar .sidebar-content .sidebar-section ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar .sidebar-content .sidebar-section ul li {
+            padding: 0.5rem 1rem;
+        }
+        .toppanel {
+            background-color: #2a4b7c;
+            padding: 0.5rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+        .toppanel h3 {
+            display: inline;
+            margin-right: 1rem;
+        }
+        .toppanel ul {
+            display: inline;
+            padding: 0;
+            margin: 0;
+        }
+        .toppanel ul li {
+            display: inline;
+            margin-right: 1rem;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
-add_style()  # Call the styling function
+    # Create the sidebar navigation with logo
+    st.sidebar.markdown(
+        """
+        <div class="logo">
+            <img src="https://yourcompanylogo.png" alt="Company Logo" width=50>
+            <h1 style="margin-left: 1rem; color: #ffffff;">Your App Name</h1>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
-# Header with logo (replace with your logo image)
-st.markdown(
-    """
-    <div style="display: flex; align-items: center; padding: 10px 20px; background-color: #000; color: #fff;">
-        <img src="https://placeholdit.img/30x30" alt="Logo" style="margin-right: 10px;">
-        <h1>Your App Name</h1>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
+    # Create the top panel with feature names
+    st.markdown(
+        """
+        <div class="toppanel">
+            <h3>Features:</h3>
+            <ul>
+                <li>Feature 1</li>
+                <li>Feature 2</li>
+                <li>Feature 3</li>
+                <!-- Add more features as needed -->
+            </ul>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
-# Sidebar navigation
-selection = st.sidebar.selectbox("Select a page", page_names)
+    # Create the sidebar navigation
+    st.sidebar.title("Navigation")
+    page = st.sidebar.radio(
+        "",
+        ("Home", "Page 1", "Page 2", "Page 3")
+    )
 
-# Display the selected page content
-for i, page_name in enumerate(page_names):
-    if selection == page_name:
-        page_functions[i]()
+    # Display different pages based on sidebar selection
+    if page == "Home":
+        st.header("Home Page")
+        st.write("Welcome to the home page!")
+
+    elif page == "Page 1":
+        st.header("Page 1")
+        st.write("Content of Page 1 goes here.")
+
+    elif page == "Page 2":
+        st.header("Page 2")
+        st.write("Content of Page 2 goes here.")
+
+    elif page == "Page 3":
+        st.header("Page 3")
+        st.write("Content of Page 3 goes here.")
+
+if __name__ == "__main__":
+    main()
