@@ -1,49 +1,43 @@
 import streamlit as st
 
-# Define the function to display each page
-def page_home():
-    st.title("Home Page")
-    st.write("Welcome to the Home Page!")
+# Function to render different pages based on user selection
+def render_page(page):
+    if page == "Page 1":
+        render_page1()
+    elif page == "Page 2":
+        render_page2()
+    elif page == "Page 3":
+        render_page3()
 
-def page_about():
-    st.title("About Page")
-    st.write("This is the About Page.")
+# Function to render Page 1 content
+def render_page1():
+    st.title("Page 1")
+    st.write("Welcome to Page 1")
 
-def page_contact():
-    st.title("Contact Page")
-    st.write("You can contact us here.")
+# Function to render Page 2 content
+def render_page2():
+    st.title("Page 2")
+    st.write("Welcome to Page 2")
 
-# Upload your logo image
-logo = st.sidebar.file_uploader("Upload Logo", type=["png", "jpg", "jpeg"])
+# Function to render Page 3 content
+def render_page3():
+    st.title("Page 3")
+    st.write("Welcome to Page 3")
 
-# Create the sidebar with links to different pages and logo display
-st.sidebar.image(logo, use_column_width=True) if logo else None
-st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ("Home", "About", "Contact"))
+# Sidebar with navigation links
+st.sidebar.title('Navigation')
+pages = ["Page 1", "Page 2", "Page 3"]
+selection = st.sidebar.radio("Go to", pages)
 
-# Display the selected page based on user selection
-if page == "Home":
-    page_home()
-elif page == "About":
-    page_about()
-elif page == "Contact":
-    page_contact()
-
-# Customizing the appearance of the app
+# Top panel with logo, company name, and title
 st.markdown(
     """
-    <style>
-    .st-bw {
-        background-color: black !important;
-    }
-    .css-1vupu7s {
-        padding-top: 0px !important;
-    }
-    .css-1y9fo8r {
-        background-color: #001F3F !important;
-        color: white !important;
-    }
-    </style>
+    <div style="background-color: navy; padding: 10px; color: white;">
+        <h1 style="color: white; text-align: center;">Company Name</h1>
+    </div>
     """,
-    unsafe_allow_html=True,
+    unsafe_allow_html=True
 )
+
+# Render the selected page
+render_page(selection)
