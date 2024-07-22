@@ -18,7 +18,7 @@ def main():
         }
         .reportview-container .main .block-container {
             max-width: 1200px;
-            padding-top: 2rem;
+            padding-top: 0.2rem;
         }
         .logo {
             display: flex;
